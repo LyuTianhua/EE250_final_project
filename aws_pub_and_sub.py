@@ -1,6 +1,5 @@
 import paho.mqtt.client as mqtt
 import time
-from pynput import keyboard
 
 #Custom callbacks
 def location_callback(client, userdata, message):
