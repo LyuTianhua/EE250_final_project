@@ -1,7 +1,3 @@
-"""EE 250L Lab 04 Starter Code
-
-Run vm_publisher.py in a separate terminal on your VM."""
-
 import paho.mqtt.client as mqtt
 import time
 from pynput import keyboard

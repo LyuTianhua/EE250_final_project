@@ -1,7 +1,3 @@
-"""EE 250L Lab 04 Starter Code
-
-Run rpi_pub_and_sub.py on your Raspberry Pi."""
-
 import paho.mqtt.client as mqtt
 import sys
 import time
