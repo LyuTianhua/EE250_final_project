@@ -36,6 +36,8 @@ if __name__ == '__main__':
 	client.publish("ee250@ee250-VirtualBox/location", "los angeles")
 
 	while True:
+		# debug
+		client.publish("ee250@ee250-VirtualBox/location", "los angeles")
 		# 1 callback functions for receiving the messages
 		screen_brightness_callback
 		time.sleep(1)

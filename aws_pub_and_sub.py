@@ -19,33 +19,9 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
 	print("on_message: " + msg.topic + " " + str(msg.payload, "utf-8"))
 
-# button press detecting function
-#def on_press(key):
-#	try: 
-#		k = key.char # single-char keys
-#	except: 
-#		k = key.name # other keys
-#	
-#	if k == 'w':
-#		print("w")
-#		#send "w" character to rpi
+
 #		client.publish("rpi-tianhual/lcd", "w")
-#	elif k == 'a':
-#		print("a")
-#		# send "a" character to rpi
-#		client.publish("rpi-tianhual/lcd", "a")
-#		#send "LED_ON"
-#		client.publish("rpi-tianhual/led", "LED_ON")
-#	elif k == 's':
-#		print("s")
-#		# send "s" character to rpi
-#		client.publish("rpi-tianhual/lcd", "s")
-#	elif k == 'd':
-#		print("d")
-#		# send "d" character to rpi
-#		client.publish("rpi-tianhual/lcd", "d")
-#		# send "LED_OFF"
-#		client.publish("rpi-tianhual/led", "LED_OFF")
+
 
 if __name__ == '__main__':
 	#setup the keyboard event listener
@@ -58,6 +34,7 @@ if __name__ == '__main__':
 	client.on_connect = on_connect
 	client.connect(host="eclipse.usc.edu", port=11000, keepalive=60)
 	client.loop_start()
+	location_callback
 
 	while True:
 		#on_press(lis)
