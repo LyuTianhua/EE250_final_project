@@ -35,6 +35,7 @@ if __name__ == '__main__':
 
 	while True:
 		# debug
+		client.publish("ubuntu/screen_brightness", "100")
 		location_callback
 		time.sleep(1)    
 
