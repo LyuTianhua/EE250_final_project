@@ -12,15 +12,15 @@ def on_connect(client, userdata, flags, rc):
 	print("Connected to server (i.e., broker) with result code "+str(rc))
 
 	#subscribe to topics of interest here
-	client.subscribe("ubuntu/location_callback")
-	client.message_callback_add("ubuntu/location_callback", ultrasonic_callback)
+	client.subscribe("ee250@ee250-VirtualBox/location_callback")
+	client.message_callback_add("ee250@ee250-VirtualBox/location_callback", ultrasonic_callback)
 
 #Default message callback. Please use custom callbacks.
 def on_message(client, userdata, msg):
 	print("on_message: " + msg.topic + " " + str(msg.payload, "utf-8"))
 
 
-#		client.publish("rpi-tianhual/lcd", "w")
+#		client.publish("ubuntu/lcd", "w")
 
 
 if __name__ == '__main__':

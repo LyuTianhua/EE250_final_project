@@ -20,6 +20,8 @@ def on_connect(client, userdata, flags, rc):
 	#subscribe to the ultrasonic ranger and click button
 	client.subscribe("ubuntu/location_callback")
 	client.message_callback_add("ubuntu/location_callback", ultrasonic_callback)
+	client.subscribe("ee250@ee250-VirtualBox/button")
+	client.message_callback_add("ee250@ee250-VirtualBox/button", button_callback)
 
 #Default message callback. Please use custom callbacks.
 def on_message(client, userdata, msg):

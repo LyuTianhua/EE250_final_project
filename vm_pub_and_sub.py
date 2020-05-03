@@ -15,8 +15,8 @@ def on_connect(client, userdata, flags, rc):
 	print("Connected to server (i.e., broker) with result code "+str(rc))
 
 	#subscribe to topics of interest here
-	client.subscribe("ee250@ee250-VirtualBox/screen_brightness")
-	client.message_callback_add("ee250@ee250-VirtualBox/screen_brightness", screen_brightness)
+	client.subscribe("ubuntu/screen_brightness")
+	client.message_callback_add("ubuntu/screen_brightness", screen_brightness)
 
 #Default message callback.
 def on_message(client, userdata, msg):
