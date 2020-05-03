@@ -12,8 +12,8 @@ def on_connect(client, userdata, flags, rc):
 	print("Connected to server (i.e., broker) with result code "+str(rc))
 
 	#subscribe to topics of interest here
-	client.subscribe("ee250@ee250-VirtualBox/location_callback")
-	client.message_callback_add("ee250@ee250-VirtualBox/location_callback", ultrasonic_callback)
+	client.subscribe("ee250@ee250-VirtualBox/location")
+	client.message_callback_add("ee250@ee250-VirtualBox/location", location_callback)
 
 #Default message callback. Please use custom callbacks.
 def on_message(client, userdata, msg):
@@ -24,9 +24,6 @@ def on_message(client, userdata, msg):
 
 
 if __name__ == '__main__':
-	#setup the keyboard event listener
-#	lis = keyboard.Listener(on_press=on_press)
-#	lis.start() # start to listen on a separate thread
 
 	#this section is covered in publisher_and_subscriber_example.py
 	client = mqtt.Client()
@@ -37,7 +34,7 @@ if __name__ == '__main__':
 	location_callback
 
 	while True:
-		#on_press(lis)
+		# debug
 		location_callback
 		time.sleep(1)    
 
