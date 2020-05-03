@@ -2,10 +2,10 @@ import paho.mqtt.client as mqtt
 import time
 
 #Custom callbacks
-def ultrasonic_callback(client, userdata, message):
-	print("ultrasonic_callback: " + message.topic + " " + "\"" + 
+def location_callback(client, userdata, message):
+	print("location_callback: " + message.topic + " " + "\"" + 
 		str(message.payload, "utf-8") + "\"")
-	print("ultrasonic_callback: message.payload is of type " + 
+	print("location_callback: message.payload is of type " + 
 		str(type(message.payload)))
 
 def button_callback(client, userdata, message):
@@ -18,10 +18,8 @@ def on_connect(client, userdata, flags, rc):
 	print("Connected to server (i.e., broker) with result code "+str(rc))
 
 	#subscribe to the ultrasonic ranger and click button
-	client.subscribe("ee250@ee250-VirtualBox/ultrasonic")
-	client.message_callback_add("ee250@ee250-VirtualBox/ultrasonic", ultrasonic_callback)
-	client.subscribe("ee250@ee250-VirtualBox/button")
-	client.message_callback_add("ee250@ee250-VirtualBox/button", button_callback)
+	client.subscribe("ubuntu/location_callback")
+	client.message_callback_add("ubuntu/location_callback", ultrasonic_callback)
 
 #Default message callback. Please use custom callbacks.
 def on_message(client, userdata, msg):
@@ -36,8 +34,7 @@ if __name__ == '__main__':
 
 	while True:
 		# 2 callback functions for receiving the messages
-		ultrasonic_callback
-		button_callback
+		location_callback
 		time.sleep(1)
 			
 
