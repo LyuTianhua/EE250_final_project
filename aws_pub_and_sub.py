@@ -29,7 +29,7 @@ if __name__ == '__main__':
 		jsonStr = json.dumps(dataSPY)
 		client.publish("ubuntu/SPY_index", jsonStr)
 		jsonStr = json.dumps(dataWCHN)
-		client.publish("ubuntu/WCHN_index", dataWCHN)
+		client.publish("ubuntu/WCHN_index", jsonStr)
 		jsonStr = json.dumps(dataINDA)
 		client.publish("ubuntu/INDA_index", jsonStr)
 		time.sleep(10)    
