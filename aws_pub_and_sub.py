@@ -1,5 +1,7 @@
-import paho.mqtt.client as mqtt
 import time
+import json
+import pandas as pd
+import paho.mqtt.client as mqtt
 from alpha_vantage.timeseries import TimeSeries
 
 def on_connect(client, userdata, flags, rc):
@@ -17,15 +19,18 @@ if __name__ == '__main__':
 	client.on_connect = on_connect
 	client.connect(host="eclipse.usc.edu", port=11000, keepalive=60)
 	client.loop_start()
-	
-	# gather data here
-	ts = TimeSeries(key='70CGDRRQ9MGZSXAV',output_format='pandas')
-	data, meta_data = ts.get_intraday(symbol='TSLA', interval='1min', outputsize='compact')
 
 	while True:
-		# debug
-		client.publish("ubuntu/dow_index", "100")
-		client.publish("ubuntu/nasdaq_index", "100")
-		client.publish("ubuntu/sp_index", "100")
-		time.sleep(3)    
+		# gather data here
+		ts = TimeSeries(key='70CGDRRQ9MGZSXAV')
+		dataSPY, meta_dataSPY = ts.get_intraday(symbol='SPY', interval='60min', outputsize='compact')
+		dataWCHN, meta_dataWCHN = ts.get_intraday(symbol='WCHN', interval='60min', outputsize='compact')
+		dataINDA, meta_dataINDA = ts.get_intraday(symbol='INDA', interval='60min', outputsize='compact')
+		jsonStr = json.dumps(dataSPY)
+		client.publish("ubuntu/SPY_index", jsonStr)
+		jsonStr = json.dumps(dataWCHN)
+		client.publish("ubuntu/WCHN_index", dataWCHN)
+		jsonStr = json.dumps(dataINDA)
+		client.publish("ubuntu/INDA_index", jsonStr)
+		time.sleep(10)    
 
