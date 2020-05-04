@@ -2,6 +2,7 @@ import paho.mqtt.client as mqtt
 import sys
 import time
 import os
+import matplotlib.pyplot as plt
 
 cmd = ""
 dow = False
@@ -18,18 +19,24 @@ def dow_index_callback(client, userdata, message):
 		str(message.payload, "utf-8") + "\"")
 	dow_index = str(type(message.payload))
 	print("dow_index_callback: message.payload is of type " + dow_index)
+	plt.title('DOW index')
+	plt.show()
 	
 def nasdaq_index_callback(client, userdata, message):
 	print("nasdaq_index_callback: " + message.topic + " " + "\"" + 
 		str(message.payload, "utf-8") + "\"")
 	nasdaq_index = str(type(message.payload))
 	print("nasdaq_index_callback: message.payload is of type " + nasdaq_index)
+	plt.title('Nasdaq index')
+	plt.show()
 
 def sp_index_callback(client, userdata, message):
 	print("sp_index_callback: " + message.topic + " " + "\"" + 
 		str(message.payload, "utf-8") + "\"")
 	sp_index = str(type(message.payload))
 	print("sp_index_callback: message.payload is of type " + sp_index)
+	plt.title('S&P index')
+	plt.show()
 	
 # Subscribe the screen_brightness topics when connected
 def on_connect(client, userdata, flags, rc):
