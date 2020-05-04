@@ -1,19 +1,8 @@
 import paho.mqtt.client as mqtt
 import time
 
-#Custom callbacks
-def location_callback(client, userdata, message):
-	print("location_callback: " + message.topic + " " + "\"" + 
-		str(message.payload, "utf-8") + "\"")
-	print("location_callback: message.payload is of type " + 
-		str(type(message.payload)))
-
 def on_connect(client, userdata, flags, rc):
 	print("Connected to server (i.e., broker) with result code "+str(rc))
-
-	#subscribe to topics of interest here
-	# client.subscribe("ee250@ee250-VirtualBox/location")
-	# client.message_callback_add("ee250@ee250-VirtualBox/location", location_callback)
 
 #Default message callback. Please use custom callbacks.
 def on_message(client, userdata, msg):
@@ -35,7 +24,8 @@ if __name__ == '__main__':
 
 	while True:
 		# debug
-		client.publish("ubuntu/djia_index", "100")
-		location_callback
+		client.publish("ubuntu/dow_index", "100")
+		client.publish("ubuntu/nasdaq_index", "100")
+		client.publish("ubuntu/sp_index", "100")
 		time.sleep(3)    
 
