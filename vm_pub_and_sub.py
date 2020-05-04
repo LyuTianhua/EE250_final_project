@@ -3,6 +3,7 @@ import time
 import os
 import matplotlib.pyplot as plt
 import paho.mqtt.client as mqtt
+import pandas as pd
 
 cmd = ""
 SPY = False
@@ -55,9 +56,9 @@ def on_connect(client, userdata, flags, rc):
 		print("Unable to connect to the server.")
 		
 	#subscribe to topics of interest here
-	client.subscribe("ubuntu/dow_index")
+	client.subscribe("ubuntu/SPY_index")
 	client.message_callback_add("ubuntu/SPY_index", SPY_index_callback)
-	client.subscribe("ubuntu/nasdaq_index")
+	client.subscribe("ubuntu/WCHN_index")
 	client.message_callback_add("ubuntu/WCHN_index", WCHN_index_callback)
 	client.subscribe("ubuntu/sp_index")
 	client.message_callback_add("ubuntu/INDA_index", INDA_index_callback)
@@ -83,11 +84,11 @@ if __name__ == '__main__':
 				else:
 					valid = True
 					if elem == 1:
-						dow = True
+						SPY = True
 					elif elem == 2:
-						nasdaq = True
+						WCHN = True
 					elif elem == 3:
-						sp = True
+						INDA = True
 		
 		if valid:
 			break;

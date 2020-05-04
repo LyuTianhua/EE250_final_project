@@ -19,10 +19,10 @@ if __name__ == '__main__':
 	client.on_connect = on_connect
 	client.connect(host="eclipse.usc.edu", port=11000, keepalive=60)
 	client.loop_start()
-
+	ts = TimeSeries(key='70CGDRRQ9MGZSXAV')
+	
 	while True:
 		# gather data here
-		ts = TimeSeries(key='70CGDRRQ9MGZSXAV')
 		dataSPY, meta_dataSPY = ts.get_intraday(symbol='SPY', interval='60min', outputsize='compact')
 		time.sleep(15)   
 		dataWCHN, meta_dataWCHN = ts.get_intraday(symbol='WCHN', interval='60min', outputsize='compact')
