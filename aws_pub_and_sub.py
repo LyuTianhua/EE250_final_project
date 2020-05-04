@@ -24,7 +24,9 @@ if __name__ == '__main__':
 		# gather data here
 		ts = TimeSeries(key='70CGDRRQ9MGZSXAV')
 		dataSPY, meta_dataSPY = ts.get_intraday(symbol='SPY', interval='60min', outputsize='compact')
+		time.sleep(15)   
 		dataWCHN, meta_dataWCHN = ts.get_intraday(symbol='WCHN', interval='60min', outputsize='compact')
+		time.sleep(15)   
 		dataINDA, meta_dataINDA = ts.get_intraday(symbol='INDA', interval='60min', outputsize='compact')
 		jsonStr = json.dumps(dataSPY)
 		client.publish("ubuntu/SPY_index", jsonStr)
@@ -32,5 +34,5 @@ if __name__ == '__main__':
 		client.publish("ubuntu/WCHN_index", jsonStr)
 		jsonStr = json.dumps(dataINDA)
 		client.publish("ubuntu/INDA_index", jsonStr)
-		time.sleep(10)    
+		time.sleep(15)    
 
