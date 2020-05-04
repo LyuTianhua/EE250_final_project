@@ -1,8 +1,8 @@
-import paho.mqtt.client as mqtt
 import sys
 import time
 import os
 import matplotlib.pyplot as plt
+import paho.mqtt.client as mqtt
 
 cmd = ""
 dow = False
