@@ -12,8 +12,8 @@ def on_connect(client, userdata, flags, rc):
 	print("Connected to server (i.e., broker) with result code "+str(rc))
 
 	#subscribe to topics of interest here
-	client.subscribe("ee250@ee250-VirtualBox/location")
-	client.message_callback_add("ee250@ee250-VirtualBox/location", location_callback)
+	# client.subscribe("ee250@ee250-VirtualBox/location")
+	# client.message_callback_add("ee250@ee250-VirtualBox/location", location_callback)
 
 #Default message callback. Please use custom callbacks.
 def on_message(client, userdata, msg):
@@ -35,7 +35,7 @@ if __name__ == '__main__':
 
 	while True:
 		# debug
-		client.publish("ubuntu/screen_brightness", "100")
+		client.publish("ubuntu/djia_index", "100")
 		location_callback
 		time.sleep(3)    
 

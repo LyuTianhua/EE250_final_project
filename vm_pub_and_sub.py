@@ -4,13 +4,11 @@ import time
 import os
 
 #Custom callbacks 
-def screen_brightness_callback(client, userdata, message):
+def djia_index_callback(client, userdata, message):
 	print("screen_brightness_callback: " + message.topic + " " + "\"" + 
 		str(message.payload, "utf-8") + "\"")
-	screen_brightness_index = str(type(message.payload))
-	print("screen_brightness_callback: message.payload is of type " + screen_brightness_index)
-	# Change brightness here
-	os.system('xbacklight -set ' + str(50))
+	djia_index = str(type(message.payload))
+	print("screen_brightness_callback: message.payload is of type " + djia_index)
 	
 # Subscribe the screen_brightness topics when connected
 def on_connect(client, userdata, flags, rc):
@@ -18,7 +16,7 @@ def on_connect(client, userdata, flags, rc):
 
 	#subscribe to topics of interest here
 	client.subscribe("ubuntu/screen_brightness")
-	client.message_callback_add("ubuntu/screen_brightness", screen_brightness_callback)
+	client.message_callback_add("ubuntu/djia_index", djia_index_callback)
 
 #Default message callback.
 def on_message(client, userdata, msg):
@@ -34,11 +32,11 @@ if __name__ == '__main__':
 	client.loop_start()
 
 	# publish current location
-	client.publish("ee250@ee250-VirtualBox/location", "los angeles")
+	# client.publish("ee250@ee250-VirtualBox/location", "los angeles")
 
 	while True:
 		# 1 callback functions for receiving the messages
-		screen_brightness_callback
+		# screen_brightness_callback
 		time.sleep(1)
 			
 
