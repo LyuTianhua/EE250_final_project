@@ -57,7 +57,7 @@ if __name__ == '__main__':
 
 	while True:
 		print("\nPlease select the stock index you want to view.\nEnter in numeric order and do not seperate with anything if there are multiple.")
-		print("1-dow index, 2-nasdaq index, 3-s&p index")
+		print("1-SPDR S&P 500 Trust ETF, 2-ISHARES TR/MSCI INDIA ETF, 3-WisdomTree ICBCCS S&P China 500 Fund")
 		cmd = input("Enter your choice: ")
 		
 		if len(cmd) < 1 | len(cmd) > 3:
